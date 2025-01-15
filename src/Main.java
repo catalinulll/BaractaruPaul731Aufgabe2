@@ -27,7 +27,8 @@ public class Main {
             System.out.println("7. Delete Player");
             System.out.println("8. Display All Players");
             System.out.println("9. Display Players in Club");
-
+            System.out.println("10. Sort Players in Club by Market Value");
+            System.out.println("11. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -174,7 +175,29 @@ public class Main {
                     }
                     break;
 
+                case 10:
+                    System.out.print("Enter Club ID: ");
+                    int clubIdForSort = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Sort by Market Value? (true for ascending, false for descending): ");
+                    boolean ascending = scanner.nextBoolean();
+                    scanner.nextLine();
 
+                    List<Player> sortedPlayers = clubController.getPlayersSortedByMarketValue(clubIdForSort, ascending);
+                    if (sortedPlayers != null) {
+                        System.out.println("Players sorted by Market Value:");
+                        for (Player p : sortedPlayers) {
+                            System.out.println(p);
+                        }
+                    } else {
+                        System.out.println("Club not found or no players available!");
+                    }
+                    break;
+
+                case 11:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    return;
 
                 default:
                     System.out.println("Invalid option! Try again.");
