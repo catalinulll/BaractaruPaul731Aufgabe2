@@ -49,6 +49,14 @@ public class Club {
         this.players = players;
     }
 
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
+
+    public void removePlayer(Player player) {
+        players.remove(player);
+    }
+
     @Override
     public String toString() {
         return "Vereine{" +
