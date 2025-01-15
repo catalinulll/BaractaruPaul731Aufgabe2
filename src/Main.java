@@ -26,6 +26,7 @@ public class Main {
             System.out.println("6. Edit Player");
             System.out.println("7. Delete Player");
             System.out.println("8. Display All Players");
+            System.out.println("9. Display Players in Club");
 
             System.out.print("Choose an option: ");
 
@@ -157,6 +158,22 @@ public class Main {
                         System.out.println(p);
                     }
                     break;
+
+                case 9:
+                    System.out.print("Enter Club ID: ");
+                    int clubIdForDisplay = scanner.nextInt();
+                    scanner.nextLine();
+                    Club clubToDisplay = clubController.findClubById(clubIdForDisplay);
+                    if (clubToDisplay != null) {
+                        System.out.println("Players in Club " + clubToDisplay.getName() + ":");
+                        for (Player p : clubToDisplay.getPlayers()) {
+                            System.out.println(p);
+                        }
+                    } else {
+                        System.out.println("Club not found!");
+                    }
+                    break;
+
 
 
                 default:
